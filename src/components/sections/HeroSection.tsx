@@ -7,27 +7,20 @@ export function HeroSection() {
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-muted to-background">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-secondary/10 via-transparent to-transparent" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-700">
-            {heroContent.headline.split(". ").map((word, i, arr) => (
-              <span key={i} className="block">
-                {word}
-                {i < arr.length - 1 && "."}
-              </span>
-            ))}
+            {heroContent.headline}
           </h1>
-          
+
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
             {heroContent.subheadline}
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
             <Button size="lg" asChild>
-              <Link to="/book">
-                {heroContent.ctaText}
-              </Link>
+              <Link to="/book">{heroContent.ctaText}</Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link to="/services">View Services</Link>
