@@ -1,79 +1,114 @@
+import { PageContainer } from "@/components/layout/PageContainer";
+import { Card, CardContent } from "@/components/ui/card";
+import { businessInfo, aboutContent } from "@/data/siteConfig";
+import { Award, Heart, Sparkles, Users } from "lucide-react";
+
 export function About() {
-    return (
-        <div className="min-h-screen bg-black pt-24 pb-16 px-8">
-            <div className="max-w-4xl mx-auto">
-                {/* Header */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-light text-white mb-4">About</h1>
-                    <p className="text-white/60">The story behind the lens</p>
-                </div>
+  const values = [
+    {
+      icon: Award,
+      title: "Exceptional Service",
+      description:
+        "We're committed to providing the highest quality service to every client who walks through our doors.",
+    },
+    {
+      icon: Heart,
+      title: "Warm Atmosphere",
+      description:
+        "Our salon is a welcoming space where everyone feels comfortable and at ease.",
+    },
+    {
+      icon: Sparkles,
+      title: "Professional Expertise",
+      description:
+        "Our team brings years of experience and continuous training to deliver outstanding results.",
+    },
+    {
+      icon: Users,
+      title: "Client-Focused",
+      description:
+        "Your satisfaction is our priority. We listen to your needs and work to exceed your expectations.",
+    },
+  ];
 
-                {/* Content Grid */}
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                    {/* Image */}
-                    <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
-                        <img
-                            src="/landing page copy.jpg"
-                            alt="Abilash Maria"
-                            className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    </div>
-
-                    {/* Bio */}
-                    <div className="space-y-6">
-                        <h2 className="text-2xl md:text-3xl font-light text-white">
-                            Abilash Maria
-                        </h2>
-                        <p className="text-white/70 leading-relaxed">
-                            A passionate filmmaker with over 8 years of experience crafting visual stories
-                            that captivate and inspire. Specializing in cinematic storytelling, I bring a
-                            unique perspective to every project, whether it's a short film, documentary,
-                            music video, or commercial.
-                        </p>
-                        <p className="text-white/70 leading-relaxed">
-                            My work has been featured in numerous film festivals and has garnered recognition
-                            for its innovative approach to visual narrative. I believe in the power of imagery
-                            to evoke emotion and create lasting connections with audiences.
-                        </p>
-                        <p className="text-white/70 leading-relaxed">
-                            Based in India, I work with clients worldwide, bringing visions to life through
-                            meticulous attention to detail and artistic excellence.
-                        </p>
-
-                        {/* Stats */}
-                        <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
-                            <div className="text-center">
-                                <p className="text-3xl font-light text-white">8+</p>
-                                <p className="text-sm text-white/50">Years Experience</p>
-                            </div>
-                            <div className="text-center">
-                                <p className="text-3xl font-light text-white">50+</p>
-                                <p className="text-sm text-white/50">Projects Completed</p>
-                            </div>
-                            <div className="text-center">
-                                <p className="text-3xl font-light text-white">15+</p>
-                                <p className="text-sm text-white/50">Awards Won</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Skills Section */}
-                <div className="mt-20">
-                    <h3 className="text-xl font-light text-white text-center mb-8">Expertise</h3>
-                    <div className="flex flex-wrap justify-center gap-4">
-                        {['Cinematography', 'Direction', 'Color Grading', 'Editing', 'Sound Design', 'Storytelling'].map((skill) => (
-                            <span
-                                key={skill}
-                                className="px-6 py-3 rounded-full border border-white/20 text-white/70 text-sm hover:border-white/50 hover:text-white transition-all duration-300"
-                            >
-                                {skill}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-            </div>
+  return (
+    <PageContainer>
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">
+            {aboutContent.title}
+          </h1>
+          <div className="max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {aboutContent.story}
+            </p>
+          </div>
         </div>
-    );
+      </section>
+
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">Our Values</h2>
+          <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+            These core values guide everything we do at {businessInfo.name}
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((value, index) => (
+              <Card
+                key={value.title}
+                className="text-center hover:shadow-lg transition-shadow"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <CardContent className="pt-6">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <value.icon className="h-7 w-7 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">{value.title}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {value.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-4">Visit Our Salon</h2>
+              <p className="text-muted-foreground mb-6">
+                We're conveniently located in Kanata, Ottawa. Come experience the
+                Mancini's difference for yourself.
+              </p>
+              <div className="space-y-3">
+                <p className="font-medium">{businessInfo.name}</p>
+                <p className="text-muted-foreground">{businessInfo.fullAddress}</p>
+                <p className="text-muted-foreground">
+                  {businessInfo.phoneFormatted}
+                </p>
+              </div>
+            </div>
+            <div className="rounded-lg overflow-hidden shadow-lg h-[300px] bg-muted">
+              <iframe
+                src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.5${businessInfo.coordinates.lat}!2d${businessInfo.coordinates.lng}!3d${businessInfo.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ceef2e8b1f1a1a1%3A0x1a1a1a1a1a1a1a1a!2s${encodeURIComponent(
+                  businessInfo.fullAddress
+                )}!5e0!3m2!1sen!2sca!4v1234567890`}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mancini's Hair Salon Location"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </PageContainer>
+  );
 }

@@ -1,183 +1,312 @@
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { PageContainer } from "@/components/layout/PageContainer";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { businessInfo, hoursConfig } from "@/data/siteConfig";
+import { MapPin, Phone, Mail, Send, Facebook, Instagram, Calendar } from "lucide-react";
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  message?: string;
+}
 
 export function Contact() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-    });
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Handle form submission
-        console.log('Form submitted:', formData);
-        alert('Thank you for your message! I will get back to you soon.');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-    };
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData(prev => ({
-            ...prev,
-            [e.target.name]: e.target.value
-        }));
-    };
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    }
 
-    return (
-        <div className="min-h-screen bg-black pt-24 pb-16 px-8">
-            <div className="max-w-6xl mx-auto">
-                {/* Header */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-light text-white mb-4">Contact</h1>
-                    <p className="text-white/60 max-w-xl mx-auto">
-                        Have a project in mind? Let's create something extraordinary together.
-                    </p>
-                </div>
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email";
+    }
 
-                <div className="grid md:grid-cols-2 gap-12">
-                    {/* Contact Info */}
-                    <div className="space-y-8">
-                        <div>
-                            <h2 className="text-2xl font-light text-white mb-6">Get in Touch</h2>
-                            <p className="text-white/60 leading-relaxed mb-8">
-                                I'm always open to discussing new projects, creative ideas, or opportunities
-                                to be part of your vision. Feel free to reach out!
-                            </p>
-                        </div>
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    }
 
-                        {/* Contact Details */}
-                        <div className="space-y-4">
-                            <a
-                                href="mailto:hello@abilashmaria.com"
-                                className="flex items-center gap-4 text-white/70 hover:text-white transition-colors group"
-                            >
-                                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white/50 transition-colors">
-                                    <Mail className="w-5 h-5" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-white/50">Email</p>
-                                    <p className="text-white">hello@abilashmaria.com</p>
-                                </div>
-                            </a>
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-                            <a
-                                href="tel:+919876543210"
-                                className="flex items-center gap-4 text-white/70 hover:text-white transition-colors group"
-                            >
-                                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white/50 transition-colors">
-                                    <Phone className="w-5 h-5" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-white/50">Phone</p>
-                                    <p className="text-white">+91 98765 43210</p>
-                                </div>
-                            </a>
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-                            <div className="flex items-center gap-4 text-white/70">
-                                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center">
-                                    <MapPin className="w-5 h-5" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-white/50">Location</p>
-                                    <p className="text-white">Kerala, India</p>
-                                </div>
-                            </div>
-                        </div>
+    if (validateForm()) {
+      console.log("Form submitted:", formData);
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", message: "" });
 
-                        {/* Social Links */}
-                        <div className="pt-8 border-t border-white/10">
-                            <p className="text-sm text-white/50 mb-4">Follow me</p>
-                            <div className="flex gap-4">
-                                {[
-                                    { icon: Instagram, href: '#' },
-                                    { icon: Youtube, href: '#' },
-                                    { icon: Linkedin, href: '#' },
-                                ].map(({ icon: Icon, href }, index) => (
-                                    <a
-                                        key={index}
-                                        href={href}
-                                        className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:border-white/50 hover:text-white transition-all"
-                                    >
-                                        <Icon className="w-4 h-4" />
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    }
+  };
 
-                    {/* Contact Form */}
-                    <div className="bg-white/5 rounded-2xl p-8 backdrop-blur-sm border border-white/10">
-                        <h3 className="text-xl font-light text-white mb-6">Send a Message</h3>
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label htmlFor="name" className="block text-sm text-white/50 mb-2">Name</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        required
-                                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-white/30 transition-colors"
-                                        placeholder="Your name"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="email" className="block text-sm text-white/50 mb-2">Email</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
-                                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-white/30 transition-colors"
-                                        placeholder="your@email.com"
-                                    />
-                                </div>
-                            </div>
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
-                            <div>
-                                <label htmlFor="subject" className="block text-sm text-white/50 mb-2">Subject</label>
-                                <input
-                                    type="text"
-                                    id="subject"
-                                    name="subject"
-                                    value={formData.subject}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-white/30 transition-colors"
-                                    placeholder="Project inquiry"
-                                />
-                            </div>
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
 
-                            <div>
-                                <label htmlFor="message" className="block text-sm text-white/50 mb-2">Message</label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    required
-                                    rows={5}
-                                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-white/30 transition-colors resize-none"
-                                    placeholder="Tell me about your project..."
-                                />
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="w-full bg-white text-black font-medium py-3 px-6 rounded-lg flex items-center justify-center gap-2 hover:bg-white/90 transition-colors"
-                            >
-                                <Send className="w-4 h-4" />
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+  return (
+    <PageContainer>
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
+            Contact Us
+          </h1>
+          <p className="text-muted-foreground text-center max-w-2xl mx-auto">
+            Have questions or want to book an appointment? Get in touch with us today.
+          </p>
         </div>
-    );
+      </section>
+
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+              <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
+              <p className="text-muted-foreground mb-8">
+                Fill out the form below and we'll get back to you as soon as possible.
+                For immediate assistance, please call us directly.
+              </p>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <Label htmlFor="name">Name *</Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                    className={errors.name ? "border-destructive" : ""}
+                  />
+                  {errors.name && (
+                    <p className="text-sm text-destructive mt-1">{errors.name}</p>
+                  )}
+                </div>
+
+                <div>
+                  <Label htmlFor="email">Email *</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="your@email.com"
+                    className={errors.email ? "border-destructive" : ""}
+                  />
+                  {errors.email && (
+                    <p className="text-sm text-destructive mt-1">{errors.email}</p>
+                  )}
+                </div>
+
+                <div>
+                  <Label htmlFor="phone">Phone</Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="(613) 555-5555"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="message">Message *</Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="How can we help you?"
+                    rows={5}
+                    className={errors.message ? "border-destructive" : ""}
+                  />
+                  {errors.message && (
+                    <p className="text-sm text-destructive mt-1">
+                      {errors.message}
+                    </p>
+                  )}
+                </div>
+
+                <Button type="submit" size="lg" className="w-full gap-2">
+                  <Send className="h-4 w-4" />
+                  Send Message
+                </Button>
+
+                {isSubmitted && (
+                  <p className="text-green-600 text-center p-4 bg-green-50 rounded-lg">
+                    Thank you for your message! This is a demo form - in production,
+                    this would be sent to our team.
+                  </p>
+                )}
+              </form>
+            </div>
+
+            <div className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Calendar className="h-5 w-5" />
+                    Book an Appointment
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-4">
+                    For the fastest service, book your appointment online.
+                  </p>
+                  <Button asChild className="w-full">
+                    <Link to="/book">Book Online Now</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <MapPin className="h-5 w-5" />
+                    Location
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div>
+                    <p className="font-medium">{businessInfo.name}</p>
+                    <p className="text-muted-foreground">
+                      {businessInfo.fullAddress}
+                    </p>
+                  </div>
+                  <div className="h-[200px] rounded-lg overflow-hidden bg-muted">
+                    <iframe
+                      src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.5${businessInfo.coordinates.lat}!2d${businessInfo.coordinates.lng}!3d${businessInfo.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ceef2e8b1f1a1a1%3A0x1a1a1a1a1a1a1a1a!2s${encodeURIComponent(
+                        businessInfo.fullAddress
+                      )}!5e0!3m2!1sen!2sca!4v1234567890`}
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Mancini's Hair Salon Location"
+                    />
+                  </div>
+                  <Button variant="outline" className="w-full" asChild>
+                    <a
+                      href={businessInfo.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Get Directions
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Phone className="h-5 w-5" />
+                    Contact Info
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <a
+                    href={`tel:${businessInfo.phone}`}
+                    className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <Phone className="h-5 w-5" />
+                    {businessInfo.phoneFormatted}
+                  </a>
+                  {businessInfo.email && (
+                    <a
+                      href={`mailto:${businessInfo.email}`}
+                      className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <Mail className="h-5 w-5" />
+                      {businessInfo.email}
+                    </a>
+                  )}
+                  <div className="flex gap-3 pt-4">
+                    <a
+                      href="#"
+                      className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
+                      aria-label="Facebook"
+                    >
+                      <Facebook className="h-5 w-5" />
+                    </a>
+                    <a
+                      href="#"
+                      className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
+                      aria-label="Instagram"
+                    >
+                      <Instagram className="h-5 w-5" />
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Hours</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {hoursConfig.hours.map((hours) => (
+                      <div
+                        key={hours.day}
+                        className="flex justify-between text-sm"
+                      >
+                        <span className="text-muted-foreground">{hours.day}</span>
+                        <span>
+                          {hours.isClosed
+                            ? "Closed"
+                            : `${hours.open} - ${hours.close}`}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-4">
+                    {hoursConfig.note}
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+    </PageContainer>
+  );
 }
