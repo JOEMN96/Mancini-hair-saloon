@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "title": "Urban Dreams",
+        "category": "Short Film",
+        "image": "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800",
+        "description": "A cinematic journey through city nightlife",
+        "year": "2024"
+    },
+    {
+        "id": 2,
+        "title": "Mountain Echo",
+        "category": "Documentary",
+        "image": "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=800",
+        "description": "Exploring the lives of mountain climbers",
+        "year": "2024"
+    },
+    {
+        "id": 3,
+        "title": "Neon Nights",
+        "category": "Music Video",
+        "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800",
+        "description": "High-energy music video with stunning visuals",
+        "year": "2023"
+    },
+    {
+        "id": 4,
+        "title": "Silent Stories",
+        "category": "Commercial",
+        "image": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800",
+        "description": "Award-winning brand campaign",
+        "year": "2023"
+    },
+    {
+        "id": 5,
+        "title": "Coastal Horizons",
+        "category": "Short Film",
+        "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
+        "description": "A visual poem about the ocean",
+        "year": "2023"
+    },
+    {
+        "id": 6,
+        "title": "Street Symphony",
+        "category": "Documentary",
+        "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800",
+        "description": "The rhythm of urban street performers",
+        "year": "2022"
+    }
+]
