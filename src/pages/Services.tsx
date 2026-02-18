@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { serviceCategories, priceNote } from "@/data/services";
-import { Scissors, Sparkles, User, UserPlus, Baby } from "lucide-react";
+import { Scissors, Sparkles, User, UserPlus, Baby, type LucideIcon } from "lucide-react";
 
-const categoryIcons: Record<string, React.ElementType> = {
+const categoryIcons: Record<string, LucideIcon> = {
   "ladies-regular": Scissors,
   "ladies-specialty": Sparkles,
   "ladies-senior": User,

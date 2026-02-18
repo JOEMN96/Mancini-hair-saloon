@@ -1,5 +1,5 @@
 import { PageContainer } from "@/components/layout/PageContainer";
-import { Card, CardContent } from "@/components/ui/card";
+import { MinimalCard, MinimalCardIcon, MinimalCardTitle, MinimalCardDescription } from "@/components/ui/minimal-card";
 import { businessInfo, aboutContent } from "@/data/siteConfig";
 import { Award, Heart, Sparkles, Users } from "lucide-react";
 
@@ -54,22 +54,14 @@ export function About() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <Card
-                key={value.title}
-                className="text-center hover:shadow-lg transition-shadow"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <CardContent className="pt-6">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <value.icon className="h-7 w-7 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{value.title}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {value.description}
-                  </p>
-                </CardContent>
-              </Card>
+            {values.map((value) => (
+              <MinimalCard key={value.title} className="text-center">
+                <MinimalCardIcon className="mx-auto">
+                  <value.icon className="h-6 w-6" strokeWidth={1.5} />
+                </MinimalCardIcon>
+                <MinimalCardTitle>{value.title}</MinimalCardTitle>
+                <MinimalCardDescription>{value.description}</MinimalCardDescription>
+              </MinimalCard>
             ))}
           </div>
         </div>

@@ -1,175 +1,92 @@
-# Mancini Barbershop Website Conversion Plan
+# Mancini's Hair Salon Website Conversion Plan
 
 ## Summary
 
 Convert the existing React portfolio app into a production-ready, multi-page barbershop website for the Kanata profile, using a clean colorful modern style with shadcn-based UI, subtle motion, centralized content data, local SEO, embedded map, and call-first booking UX.
 
-## Grounded Current State
+## Implemented Changes
 
-- Existing app is Vite + React + TypeScript + Tailwind/shadcn.
-- Current routes in `/Users/joe/Desktop/Barbershop-site/src/App.tsx`: `/`, `/portfolio`, `/about`, `/contact`.
-- Current content is filmmaker/portfolio-specific and must be fully replaced.
-- No test suite exists right now; validation currently relies on `npm run lint` and `npm run build`.
-- Build is currently green.
+### ✅ Data Layer
+- Created `/Users/joe/Desktop/Barbershop-site/src/data/siteConfig.ts` with BusinessInfo, BusinessHours, Testimonials, HeroContent, AboutContent, SEO defaults
+- Created `/Users/joe/Desktop/Barbershop-site/src/data/services.ts` with full service list and prices (50+ services)
+- Created `/Users/joe/Desktop/Barbershop-site/src/data/gallery.ts` with gallery image entries
 
-## Information Architecture (Launch Scope)
+### ✅ Layout Components
+- Created `/Users/joe/Desktop/Barbershop-site/src/components/layout/SiteHeader.tsx` - Navigation with Book Now CTA
+- Created `/Users/joe/Desktop/Barbershop-site/src/components/layout/SiteFooter.tsx` - Footer with address, phone, hours
+- Created `/Users/joe/Desktop/Barbershop-site/src/components/layout/PageContainer.tsx` - Page wrapper
 
-- Route set (replace current):
-  - `/` Home
-  - `/services` Services
-  - `/about` About
-  - `/gallery` Gallery
-  - `/contact` Contact & Book
-- Navigation:
-  - Primary nav links for all 5 pages.
-  - Persistent CTA button: `Book Now` (click-to-call).
-- Footer:
-  - Address, phone, hours summary, social links placeholder, quick nav, “Get Directions” CTA.
+### ✅ Section Components
+- Created `/Users/joe/Desktop/Barbershop-site/src/components/sections/HeroSection.tsx`
+- Created `/Users/joe/Desktop/Barbershop-site/src/components/sections/ServicesPreview.tsx` (with SpotlightCard)
+- Created `/Users/joe/Desktop/Barbershop-site/src/components/sections/TestimonialsSection.tsx`
+- Created `/Users/joe/Desktop/Barbershop-site/src/components/sections/HoursCard.tsx`
+- Created `/Users/joe/Desktop/Barbershop-site/src/components/sections/MapSection.tsx`
+- Created `/Users/joe/Desktop/Barbershop-site/src/components/sections/CTASection.tsx`
 
-## UX + Content Direction
+### ✅ Pages
+- Updated `/Users/joe/Desktop/Barbershop-site/src/pages/Home.tsx`
+- Created `/Users/joe/Desktop/Barbershop-site/src/pages/Services.tsx` (with prices)
+- Updated `/Users/joe/Desktop/Barbershop-site/src/pages/About.tsx`
+- Created `/Users/joe/Desktop/Barbershop-site/src/pages/Gallery.tsx`
+- Updated `/Users/joe/Desktop/Barbershop-site/src/pages/Contact.tsx`
+- Created `/Users/joe/Desktop/Barbershop-site/src/pages/Book.tsx` (Calendly embed)
 
-- Brand style:
-  - Modern barbershop, clean + colorful, subtle motion only.
-- Booking:
-  - Call-first fallback (`tel:` link) as primary CTA.
-  - No live booking integration in v1.
-- Contact form:
-  - UI-only demo state (no backend send).
-  - Inline validation + clear demo messaging.
-- Services page:
-  - Show services only, no prices.
-- Gallery:
-  - Stock placeholder imagery for launch.
-- Reviews:
-  - Static testimonial cards.
+### ✅ Routing
+- Updated `/Users/joe/Desktop/Barbershop-site/src/App.tsx` with new routes: `/`, `/services`, `/about`, `/gallery`, `/book`, `/contact`
+- Removed `/portfolio` route
 
-## Public Content Source (Centralized Model)
+### ✅ Visual System
+- Updated `/Users/joe/Desktop/Barbershop-site/src/index.css` with new branding colors
+- Added fonts: Cormorant Garamond (headings), Sora (body)
+- Added ScrollToTop component
 
-Create a centralized typed content layer so all pages render from one source of truth.
+### ✅ SEO
+- Updated `/Users/joe/Desktop/Barbershop-site/index.html` with metadata and JSON-LD
+- Created `/Users/joe/Desktop/Barbershop-site/public/robots.txt`
+- Created `/Users/joe/Desktop/Barbershop-site/public/sitemap.xml`
 
-- Add `/Users/joe/Desktop/Barbershop-site/src/data/siteConfig.ts` with:
-  - `BusinessInfo` (name, address, phone, email, map URL, booking phone).
-  - `BusinessHours` (day-by-day hours and closed days).
-  - `ServiceCategory[]` (service groups, descriptions, representative icons, no pricing).
-  - `Testimonial[]` (name, quote, rating, source label).
-  - `HeroContent`, `AboutContent`, `SEO defaults`.
-- Add `/Users/joe/Desktop/Barbershop-site/src/data/gallery.ts` with typed gallery image entries and alt text.
-- Remove portfolio-specific data usage from `/Users/joe/Desktop/Barbershop-site/src/data/portfolio.json` in app flow.
+### ✅ Registry Components (Installed)
+- **Beams** (`/src/components/Beams.tsx`) - React Bits - 3D animated light beams
+- **SpotlightCard** (`/src/components/SpotlightCard.tsx`) - React Bits - Glow effect on hover
+- **TiltedCard** (`/src/components/TiltedCard.tsx`) - React Bits - 3D tilt effect
+- **Hyperspeed** (`/src/components/Hyperspeed.tsx`) - React Bits - Warp speed background
+- **AnimatedList** (`/src/components/AnimatedList.tsx`) - React Bits - Animated list items
+- **LetterGlitch** (`/src/components/LetterGlitch.tsx`) - React Bits - Text glitch effect
 
-## Component + Page Implementation Plan
+## Pending Implementation
 
-1. Create reusable layout shell:
+### Registry Components - Integration Needed
 
-- `/Users/joe/Desktop/Barbershop-site/src/components/layout/SiteHeader.tsx`
-- `/Users/joe/Desktop/Barbershop-site/src/components/layout/SiteFooter.tsx`
-- `/Users/joe/Desktop/Barbershop-site/src/components/layout/PageContainer.tsx`
+1. **Gallery Enhancement**
+   - Integrate TiltedCard for image cards with 3D tilt effect
+   - Add LetterGlitch to gallery title
 
-2. Create reusable section components:
+2. **Hero Enhancement**
+   - Add Beams or Hyperspeed background effect
+   - Add LetterGlitch to headline text
 
-- `/Users/joe/Desktop/Barbershop-site/src/components/sections/HeroSection.tsx`
-- `/Users/joe/Desktop/Barbershop-site/src/components/sections/ServicesPreview.tsx`
-- `/Users/joe/Desktop/Barbershop-site/src/components/sections/TestimonialsSection.tsx`
-- `/Users/joe/Desktop/Barbershop-site/src/components/sections/HoursCard.tsx`
-- `/Users/joe/Desktop/Barbershop-site/src/components/sections/MapSection.tsx`
+3. **Services Enhancement**
+   - Integrate AnimatedList for service items
 
-3. Replace pages:
+4. **Testimonials Enhancement**
+   - Add carousel/carousel component for rotating testimonials
 
-- `/Users/joe/Desktop/Barbershop-site/src/pages/Home.tsx`
-  - Hero, trust highlights, services preview, testimonials preview, CTA band.
-- `/Users/joe/Desktop/Barbershop-site/src/pages/Services.tsx` (new)
-  - Category cards, process notes, “Call to book” CTA.
-- `/Users/joe/Desktop/Barbershop-site/src/pages/About.tsx`
-  - Brand story, team/values, quality promise.
-- `/Users/joe/Desktop/Barbershop-site/src/pages/Gallery.tsx` (new)
-  - Responsive grid of placeholder cuts/styles/interior images.
-- `/Users/joe/Desktop/Barbershop-site/src/pages/Contact.tsx`
-  - Click-to-call primary CTA, UI-only contact form, embedded map, full location block, hours.
+### Quality Tasks
+- [ ] Run lint and verify passes
+- [ ] Manual responsive check at mobile/tablet/desktop breakpoints
+- [ ] Basic keyboard navigation and focus states
 
-4. Router and nav updates:
+## Technical Notes
 
-- Update `/Users/joe/Desktop/Barbershop-site/src/App.tsx` to new routes.
-- Replace `/Users/joe/Desktop/Barbershop-site/src/components/Navbar.tsx` usage with new header component.
+### Booking System
+- Uses internal `/book` page with Calendly embed
+- External booking URL stored in siteConfig but replaced with internal route
 
-## Visual System + Styling Plan
+### Services Pricing
+- Prices displayed on Services page (per user request)
+- Separate from siteConfig (which contains no pricing)
 
-- Refactor `/Users/joe/Desktop/Barbershop-site/src/index.css`:
-  - Remove portfolio/dark-template defaults that conflict with new brand.
-  - Define intentional color tokens for modern colorful barbershop look.
-  - Keep strong contrast and accessible text colors.
-- Typography:
-  - Keep body readable and introduce a stronger display style for headings.
-- Motion:
-  - Subtle reveals/hover transitions only (no heavy parallax).
-- Responsive behavior:
-  - Mobile-first layout, sticky header behavior, compressed nav menu for small screens.
-
-## SEO + Discoverability (Local SEO Full)
-
-1. Global metadata:
-
-- Update `/Users/joe/Desktop/Barbershop-site/index.html` title/description/canonical OG defaults.
-
-2. Per-page metadata:
-
-- Add `react-helmet-async` and wrap app provider in `/Users/joe/Desktop/Barbershop-site/src/main.tsx`.
-- Add page-specific title/description/OG tags in each page component.
-
-3. Structured data:
-
-- Add `LocalBusiness` JSON-LD on Home and Contact pages using centralized business info.
-
-4. Technical SEO files:
-
-- Add `/Users/joe/Desktop/Barbershop-site/public/robots.txt`
-- Add `/Users/joe/Desktop/Barbershop-site/public/sitemap.xml`
-
-## Important Interface/Type Changes
-
-- New exported types in `/Users/joe/Desktop/Barbershop-site/src/data/siteConfig.ts`:
-  - `BusinessInfo`
-  - `BusinessHours`
-  - `ServiceItem`
-  - `ServiceCategory`
-  - `Testimonial`
-  - `GalleryImage`
-- Route contract changes in `/Users/joe/Desktop/Barbershop-site/src/App.tsx`:
-  - Remove `/portfolio`
-  - Add `/services` and `/gallery`
-- Contact form model in `/Users/joe/Desktop/Barbershop-site/src/pages/Contact.tsx`:
-  - Retain client-side form state + validation but no submission API contract in v1.
-
-## Test Cases and Acceptance Criteria
-
-1. Routing and navigation
-
-- All 5 pages render without console errors.
-- Header links route correctly.
-- Book CTA triggers phone dial intent (`tel:`).
-
-2. UI behavior
-
-- Contact form validates required fields and shows explicit demo-mode response.
-- Gallery loads placeholders without layout shift breaking.
-- Embedded map renders and “Directions” link opens map destination.
-
-3. SEO
-
-- Each route sets unique title/description.
-- JSON-LD validates for required LocalBusiness fields.
-- `robots.txt` and `sitemap.xml` are present and correct.
-
-4. Quality checks
-
-- `npm run lint` passes.
-- `npm run build` passes.
-- Manual responsive check at mobile/tablet/desktop breakpoints.
-- Basic keyboard navigation and focus states work across header, CTAs, and form controls.
-
-## Assumptions and Defaults
-
-- Business profile defaults to Kanata location (Mancini Hair Salon context) and may be adjusted after owner review.
-- Services are listed without prices by request.
-- Booking provider URL is not yet finalized; call-first CTA is authoritative for v1.
-- Contact form is intentionally UI-only (no backend integration).
-- Gallery uses stock placeholders until real photos are supplied.
-- Testimonials are static curated content for launch (no live review API/widget).
+### Fonts
+- Headings: Cormorant Garamond (elegant serif)
+- Body: Sora (modern sans-serif)
