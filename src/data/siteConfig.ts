@@ -99,25 +99,41 @@ export const hoursConfig: HoursConfig = {
 export const testimonials: Testimonial[] = [
   {
     id: "1",
-    name: "Sarah M.",
+    name: "Renee Leroux",
     quote:
-      "The best salon in Kanata! The team always makes me feel so welcome and my hair has never looked better.",
+      "My mom and I have been coming here to see Michelle for years. The service we’ve received here is out of this world. Michelle is amazing and we’ve always left completely satisfied with our service and feeling amazing. Teresa is so kind and always offers a warm welcome to customers who walk through the door. Everyone here is so kind and offers amazing services. I will always continue to come to Mancini’s Hair Salon. Thank you all for everything!!",
     rating: 5,
     source: "Google Reviews",
   },
   {
     id: "2",
-    name: "James K.",
+    name: "Morris Tan",
     quote:
-      "Great men's cuts and friendly staff. I've been coming here for years and wouldn't go anywhere else.",
+      "I had my hair trimmed by Pat and he did a great job! It is the first time I had Pat cut my hair, and he asked me first what style I wanted.  He was very careful to ask more questions before cutting, to make sure it is the style I wanted. The conversations about our common love of wine also helped the time pass quickly : )",
     rating: 5,
     source: "Google Reviews",
   },
   {
     id: "3",
-    name: "Emily R.",
+    name: "Graham Bragger",
     quote:
-      "Love the atmosphere and the stylists are true professionals. My color turned out exactly how I wanted.",
+      "Kelly is such a wonderful person! She's been my stylist for over 15+ years. I would highly recommend any of the wonderful team here to meet and exceed your expectations.",
+    rating: 5,
+    source: "Google Reviews",
+  },
+  {
+    id: "4",
+    name: "Lisa Brown",
+    quote:
+      "This was my first time at Mancini’s.  Very welcoming.  Michelle is fabulous.  She is very knowledgeable and approachable.  I am very happy with my cut and colour. I highly recommend.  I will definitely be back.",
+    rating: 5,
+    source: "Google Reviews",
+  },
+  {
+    id: "5",
+    name: "Eric Gagne",
+    quote:
+      "I recently had a haircut at Mancini, and I was very happy with the experience.  Kelly has been my hairdresser for over 15+ years and she always gives me the cut that I'm looking for.",
     rating: 5,
     source: "Google Reviews",
   },
@@ -131,7 +147,7 @@ export const heroContent: HeroContent = {
 };
 
 export const aboutContent: AboutContent = {
-  title: "ABOUT MANCINI'S HAIR SALON",
+  title: "About Mancini's Hair Salon",
   story:
     "Mancini's Hair Salon is more than just a place for hairstyling—it's a space where creativity, passion, and expertise come together. We are dedicated to providing exceptional service in a warm and welcoming environment. From everyday cuts to bold transformations, our team is committed to making every client feel confident and beautiful. Your journey to stunning hair starts here!",
   values: [
@@ -146,15 +162,7 @@ export const seoDefaults: SEOConfig = {
   title: "Mancini's Hair Salon | Kanata's Premier Hair Styling",
   description:
     "Mancini's Hair Salon in Kanata - Where creativity, passion, and expertise come together. Book your appointment for exceptional haircuts, coloring, and styling services.",
-  keywords: [
-    "hair salon",
-    "haircut",
-    "hair coloring",
-    "highlights",
-    "kanata",
-    "ottawa",
-    "hair styling",
-  ],
+  keywords: ["hair salon", "haircut", "hair coloring", "highlights", "kanata", "ottawa", "hair styling"],
   ogImage: "/og-image.jpg",
   canonicalUrl: "https://www.mancinishairsalon.com",
 };

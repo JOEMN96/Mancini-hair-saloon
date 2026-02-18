@@ -3,6 +3,7 @@ import { ArrowRight, Scissors, Sparkles, Droplets } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MinimalCard, MinimalCardIcon, MinimalCardTitle, MinimalCardDescription } from "@/components/ui/minimal-card";
 import { serviceCategories } from "@/data/services";
+import { PageTitle } from "../ui/page-title";
 
 const iconMap = {
   scissors: Scissors,
@@ -23,7 +24,9 @@ export function ServicesPreview() {
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
+          <PageTitle size="h2" className="mb-4">
+            Our Services
+          </PageTitle>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             From precision cuts to stunning color transformations, our expert stylists are here to make you look and feel your
             best.

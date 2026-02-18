@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PageContainer } from "@/components/layout/PageContainer";
+import { PageTitle } from "@/components/ui/page-title";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -82,9 +83,7 @@ export function Contact() {
     <PageContainer>
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
-            Contact Us
-          </h1>
+          <PageTitle className="mb-4">Contact Us</PageTitle>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto">
             Have questions or want to book an appointment? Get in touch with us today.
           </p>

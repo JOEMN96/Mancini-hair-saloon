@@ -58,24 +58,34 @@ Convert the existing React portfolio app into a production-ready, multi-page bar
 
 ### Registry Components - Integration Needed
 
-1. **Gallery Enhancement**
-   - Integrate TiltedCard for image cards with 3D tilt effect
-   - Add LetterGlitch to gallery title
+1. ~~**Gallery Enhancement**~~ ✅ DONE
+   - ~~Integrate TiltedCard for image cards with 3D tilt effect~~ (User chose to keep current)
+   - ~~Add LetterGlitch to gallery title~~ (Replaced with GradientText PageTitle)
 
-2. **Hero Enhancement**
-   - Add Beams or Hyperspeed background effect
-   - Add LetterGlitch to headline text
+2. ~~**Hero Enhancement**~~ ✅ DONE (User chose to keep current)
+   - ~~Add Beams or Hyperspeed background effect~~ (Orb already looks good)
+   - ~~Add LetterGlitch to headline text~~ (User prefers current glossy-text style)
 
-3. **Services Enhancement**
-   - Integrate AnimatedList for service items
+3. ~~**Services Enhancement**~~ ✅ DONE
+   - Created `AnimatedServiceItem` component with staggered fade-in animations
+   - Applied to all service items in Services.tsx
 
-4. **Testimonials Enhancement**
-   - Add carousel/carousel component for rotating testimonials
+4. ~~**Testimonials Enhancement**~~ ✅ DONE
+   - Installed `@shadcn/carousel` with `embla-carousel-autoplay`
+   - Converted static grid to autoplay carousel (5s interval)
+   - Responsive: 1 on mobile, 2 on tablet, 3 on desktop
 
 ### Quality Tasks
-- [ ] Run lint and verify passes
+- [x] Run lint and verify passes (see notes below)
 - [ ] Manual responsive check at mobile/tablet/desktop breakpoints
 - [ ] Basic keyboard navigation and focus states
+
+### Lint Notes
+Lint passes build but shows warnings/errors in pre-existing and shadcn components:
+- `AnimatedList.tsx` - setState in effect (pre-existing)
+- `GradientText.tsx` - missing dependency (pre-existing)
+- `Iridescence.tsx` - missing dependencies (pre-existing)
+- `badge.tsx`, `button.tsx`, `carousel.tsx`, `combobox.tsx` - fast refresh warnings (shadcn)
 
 ## Technical Notes
 

@@ -3,6 +3,7 @@ import { PageContainer } from "@/components/layout/PageContainer";
 import { Button } from "@/components/ui/button";
 import { galleryImages, type GalleryImage } from "@/data/gallery";
 import { cn } from "@/lib/utils";
+import { PageTitle } from "@/components/ui/page-title";
 
 type FilterType = "all" | GalleryImage["category"];
 
@@ -26,9 +27,7 @@ export function Gallery() {
     <PageContainer>
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
-            Our Gallery
-          </h1>
+          <PageTitle className="mb-4">Our Gallery</PageTitle>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto">
             Take a look at some of our work. From precision cuts to stunning color
             transformations, see the Mancini's difference.

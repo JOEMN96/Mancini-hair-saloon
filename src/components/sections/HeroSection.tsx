@@ -22,10 +22,14 @@ export function HeroSection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
             <Button size="lg" asChild>
-              <Link to="/book">{heroContent.ctaText}</Link>
+              <Link to="/book" className="pointer-events-auto">
+                {heroContent.ctaText}
+              </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link to="/services">View Services</Link>
+              <Link to="/services" className="pointer-events-auto">
+                View Services
+              </Link>
             </Button>
           </div>
         </div>

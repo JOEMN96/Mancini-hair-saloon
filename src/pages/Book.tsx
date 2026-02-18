@@ -1,4 +1,5 @@
 import { PageContainer } from "@/components/layout/PageContainer";
+import { PageTitle } from "@/components/ui/page-title";
 import { useEffect } from "react";
 
 export function Book() {
@@ -13,7 +14,7 @@ export function Book() {
     <PageContainer>
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">Book Your Appointment</h1>
+          <PageTitle className="mb-4">Book Your Appointment</PageTitle>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto">
             Select a time that works for you below to book your appointment at Mancini's Hair Salon.
           </p>

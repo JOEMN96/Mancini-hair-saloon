@@ -1,5 +1,6 @@
 import { PageContainer } from "@/components/layout/PageContainer";
 import { MinimalCard, MinimalCardIcon, MinimalCardTitle, MinimalCardDescription } from "@/components/ui/minimal-card";
+import { PageTitle } from "@/components/ui/page-title";
 import { businessInfo, aboutContent } from "@/data/siteConfig";
 import { Award, Heart, Sparkles, Users } from "lucide-react";
 
@@ -35,9 +36,7 @@ export function About() {
     <PageContainer>
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">
-            {aboutContent.title}
-          </h1>
+          <PageTitle className="mb-8">{aboutContent.title}</PageTitle>
           <div className="max-w-3xl mx-auto">
             <p className="text-lg text-muted-foreground leading-relaxed">
               {aboutContent.story}
@@ -48,7 +47,7 @@ export function About() {
 
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-4">Our Values</h2>
+          <PageTitle size="h2" className="mb-4">Our Values</PageTitle>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
             These core values guide everything we do at {businessInfo.name}
           </p>

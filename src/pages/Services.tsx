@@ -1,4 +1,6 @@
 import { PageContainer } from "@/components/layout/PageContainer";
+import { PageTitle } from "@/components/ui/page-title";
+import { AnimatedServiceItem } from "@/components/ui/animated-service-list";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -21,7 +23,7 @@ export function Services() {
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
+            <PageTitle className="mb-4">Our Services</PageTitle>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               From precision cuts to stunning color transformations, our expert stylists
               offer a wide range of services to help you look and feel your best.
@@ -58,25 +60,24 @@ export function Services() {
                   </CardHeader>
                   <CardContent className="p-0">
                     <div className="divide-y">
-                      {category.services.map((service) => (
-                        <div
-                          key={service.id}
-                          className="flex items-center justify-between p-4 hover:bg-muted/20 transition-colors"
-                        >
-                          <div>
-                            <p className="font-medium">{service.name}</p>
-                            {service.description && (
-                              <p className="text-sm text-muted-foreground">
-                                {service.description}
+                      {category.services.map((service, index) => (
+                        <AnimatedServiceItem key={service.id} index={index}>
+                          <div className="flex items-center justify-between p-4 hover:bg-muted/20 transition-colors">
+                            <div>
+                              <p className="font-medium">{service.name}</p>
+                              {service.description && (
+                                <p className="text-sm text-muted-foreground">
+                                  {service.description}
+                                </p>
+                              )}
+                            </div>
+                            <div className="text-right">
+                              <p className="font-semibold text-lg">
+                                ${service.price.toFixed(2)}
                               </p>
-                            )}
+                            </div>
                           </div>
-                          <div className="text-right">
-                            <p className="font-semibold text-lg">
-                              ${service.price.toFixed(2)}
-                            </p>
-                          </div>
-                        </div>
+                        </AnimatedServiceItem>
                       ))}
                     </div>
                   </CardContent>
