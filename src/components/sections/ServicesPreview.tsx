@@ -18,7 +18,11 @@ const categoryIcons = [
 ];
 
 export function ServicesPreview() {
-  const previewCategories = serviceCategories.slice(0, 3);
+  const previewCategories = [
+    serviceCategories[0],
+    serviceCategories[3],
+    serviceCategories[5],
+  ].filter(Boolean);
 
   return (
     <section className="py-20 bg-muted/30">

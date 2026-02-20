@@ -200,7 +200,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-Garamond), serif;
+  font-family: var(--font-sora), serif;
 }
 
 h1 {
@@ -241,6 +241,7 @@ a {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -251,6 +252,7 @@ a {
     transform: translateY(20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -287,10 +289,12 @@ a {
 }
 
 @keyframes subtle-shine {
+
   0%,
   100% {
     background-position: 0% center;
   }
+
   50% {
     background-position: 100% center;
   }

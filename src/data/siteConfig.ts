@@ -142,7 +142,7 @@ export const testimonials: Testimonial[] = [
 export const heroContent: HeroContent = {
   headline: "EXCEPTIONAL. STUNNING. CONFIDENT.",
   subheadline:
-    "Mancini's Hair Salon is more than just a place for hairstyling—it's a space where creativity, passion, and expertise come together. From everyday cuts to bold transformations, our team is committed to making every client feel confident and beautiful.",
+    "Mancini's Hair Salon is more than just a place for hairstyling—it's a space where creativity, passion, and expertise come together. ",
   ctaText: "BOOK AN APPOINTMENT",
 };
 

@@ -10,7 +10,7 @@ export function HeroSection() {
         <Orb backgroundColor="#000000" rotateOnHover={true} hoverIntensity={0.3} />
       </div>
 
-      <div className="container mx-auto px-4 absolute z-1 backdrop-blur-md p-5 pointer-events-none">
+      <div className="container mx-auto px-4 absolute z-1  p-5 pointer-events-none">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-700 glossy-text">
             {heroContent.headline}
