@@ -1,73 +1,85 @@
-# React + TypeScript + Vite
+# Mancini's Hair Salon
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **Mancini's Hair Salon** website repository! This is a modern, responsive, and dynamic web application built for Kanata's premier hair styling salon. The site features a premium design with a dark mode toggle, smooth animations, and an intuitive user interface.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Modern UI/UX**: Designed with a sleek, premium, and fully responsive layout.
+- **Dark & Light Mode**: Seamlessly toggle between dark and light themes, remembering the user's preference.
+- **Dynamic Animations**: Smooth scroll animations, text effects, and micro-interactions powered by `motion` (Framer Motion) and custom CSS.
+- **Routing**: Client-side routing with `react-router-dom` for quick and seamless page transitions (Home, Services, About, Gallery, Book, Contact).
+- **SEO Optimized**: Pre-configured meta tags, Open Graph tags, and Schema.org JSON-LD structured data for better search engine visibility.
 
-## React Compiler
+## 🛠 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) (Radix UI primitives)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Animations**: `motion` and `tw-animate-css`
+- **3D Graphics**: `three.js`, `@react-three/fiber`, `@react-three/drei` (for interactive elements)
 
-## Expanding the ESLint configuration
+## 📦 Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Make sure you have [Bun](https://bun.sh/) or [Node.js](https://nodejs.org/) installed.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Clone the repository and install the dependencies:
+
+```bash
+# Clone the repository
+git clone https://github.com/JOEMN96/Mancini-hair-saloon.git
+cd Barbershop-site
+
+# Install dependencies using Bun
+bun install
+# OR using npm
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running the Development Server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Start the Vite development server:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+bun run dev
+# OR npm run dev
 ```
+
+The app will be available at `http://localhost:5173`.
+
+### Building for Production
+
+To create an optimized production build:
+
+```bash
+bun run build
+# OR npm run build
+```
+
+This will run TypeScript type checking and then bundle the app into the `dist` directory.
+
+### Previewing the Production Build
+
+To preview the generated production build locally:
+
+```bash
+bun run preview
+# OR npm run preview
+```
+
+## 📁 Project Structure
+
+- `src/components/`: Reusable React components (UI basics, layout headers/footers, specialized animations).
+- `src/pages/`: Main page components for each route (Home, About, Services, etc.).
+- `src/data/`: Static data and content configuration (`siteConfig.ts`, etc.).
+- `src/lib/`: Utility functions (e.g., Tailwind class merging).
+- `src/index.css`: Global CSS and Tailwind theme configuration (including custom color variables).
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
