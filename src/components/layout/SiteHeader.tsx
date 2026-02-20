@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Scissors } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { businessInfo } from "@/data/siteConfig";
 import { cn } from "@/lib/utils";
 
@@ -46,6 +47,7 @@ export function SiteHeader() {
             <a href={`tel:${businessInfo.phone}`} className="text-sm font-medium text-muted-foreground hover:text-primary">
               {businessInfo.phoneFormatted}
             </a>
+            <ThemeToggle />
             <Button asChild>
               <Link to="/book">Book Now</Link>
             </Button>
@@ -77,6 +79,10 @@ export function SiteHeader() {
               <a href={`tel:${businessInfo.phone}`} className="text-base font-medium text-muted-foreground">
                 {businessInfo.phoneFormatted}
               </a>
+              <div className="flex items-center justify-between">
+                <span className="text-base font-medium text-muted-foreground">Theme</span>
+                <ThemeToggle />
+              </div>
               <Button asChild className="w-full">
                 <Link to="/book" onClick={() => setIsMobileMenuOpen(false)}>
                   Book Now
